@@ -7,7 +7,7 @@ import google as genai
 load_dotenv()
 
 # Read API key
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GEMINI_API_KEY = os.getenv("GENAI_API_KEY")
 
 if not GEMINI_API_KEY:
     raise ValueError("GEMINI_API_KEY not found in environment variables")
@@ -35,4 +35,5 @@ def ask_gemini(prompt):
     """Send prompt to Gemini and return response text"""
     response = model.generate_content(prompt)
     return response.text.strip()
+
 
