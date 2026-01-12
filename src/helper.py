@@ -1,11 +1,6 @@
 import fitz  # PyMuPDF
 import os
-from dotenv import load_dotenv
 import google.generativeai as genai
-
-load_dotenv()
-
-GENAI_API_KEY = os.getenv("GENAI_API_KEY")
 
 client = genai.Client(api_key=GENAI_API_KEY)
 MODEL_ID = "gemini-2.5-flash"
@@ -33,5 +28,6 @@ def ask_gemini(prompt, max_tokens=500):
     )
 
     return response.text
+
 
 
