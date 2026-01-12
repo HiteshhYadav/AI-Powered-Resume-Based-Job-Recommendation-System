@@ -1,7 +1,7 @@
 import fitz  # PyMuPDF
 import os
 from dotenv import load_dotenv
-import google.generativeai as genai
+import google as genai
 
 load_dotenv()
 
@@ -33,4 +33,5 @@ def ask_gemini(prompt, max_tokens=500):
     )
 
     return response.text
+
 
