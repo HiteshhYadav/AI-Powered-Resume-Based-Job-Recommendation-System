@@ -1,37 +1,27 @@
-import fitz  # PyMuPDF
 import os
 from dotenv import load_dotenv
-import google as genai
+import google.generativeai as genai
+from PyPDF2 import PdfReader
 
+# load env (local) + Streamlit secrets (cloud)
 load_dotenv()
 
-GENAI_API_KEY = os.getenv("GENAI_API_KEY")
+GENAI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-client = genai.Client(api_key=GENAI_API_KEY)
-MODEL_ID = "gemini-2.5-flash"
+genai.configure(api_key=GENAI_API_KEY)
+
+# create model once
+model = genai.GenerativeModel("gemini-1.5-flash")
 
 
 def extract_text_from_pdf(uploaded_file):
-    """Extract text from a PDF file."""
-    doc = fitz.open(stream=uploaded_file.read(), filetype="pdf")
+    reader = PdfReader(uploaded_file)
     text = ""
-    for page in doc:
-        text += page.get_text()
+    for page in reader.pages:
+        text += page.extract_text()
     return text
 
 
-def ask_gemini(prompt, max_tokens=500):
-    """Send a prompt to Gemini and return the response."""
-
-    response = client.models.generate_content(
-        model=MODEL_ID,
-        contents=prompt,
-        config={
-            "temperature": 0.5,
-            "max_output_tokens": max_tokens,
-        },
-    )
-
+def ask_gemini(prompt):
+    response = model.generate_content(prompt)
     return response.text
-
-
