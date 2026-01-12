@@ -1,0 +1,12 @@
+Metadata-Version: 2.4
+Name: job
+Version: 0.1.0
+Summary: Job recommender using MCP + Gemini
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: apify-client>=2.4.0
+Requires-Dist: mcp[cli]<2.0.0,>=1.25.0
+Requires-Dist: google-genai>=0.5.0
+Requires-Dist: pymupdf>=1.26.7
+Requires-Dist: python-dotenv>=1.2.1
+Requires-Dist: streamlit>=1.52.2

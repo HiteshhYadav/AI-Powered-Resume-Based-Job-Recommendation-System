@@ -1,0 +1,15 @@
+[project]
+name = "job"
+version = "0.1.0"
+description = "Job recommender using MCP + Gemini"
+readme = "README.md"
+requires-python = ">=3.10"
+
+dependencies = [
+    "apify-client>=2.4.0",
+    "mcp[cli]>=1.25.0,<2.0.0",
+    "google-genai>=0.5.0",
+    "pymupdf>=1.26.7",
+    "python-dotenv>=1.2.1",
+    "streamlit>=1.52.2",
+]

@@ -1,0 +1,5 @@
+streamlit #UI
+google-genai #LLM
+pymupdf #PDF handling 
+python-dotenv
+apify-client  #web scraping with api token 
