@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 import fitz  # PyMuPDF
-import google.generativeai as genai
+import google as genai
 
 # Load .env locally (Streamlit Cloud uses Secrets)
 load_dotenv()
@@ -35,3 +35,4 @@ def ask_gemini(prompt):
     """Send prompt to Gemini and return response text"""
     response = model.generate_content(prompt)
     return response.text.strip()
+
